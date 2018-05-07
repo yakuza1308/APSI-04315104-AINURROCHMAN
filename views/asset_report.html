@@ -11,7 +11,7 @@
     <title>Dashboard - Universitas Narotama</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">    
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/fontawesome-all.min.css" rel="stylesheet">
     <link href="../assets/css/core/dashboard.css" rel="stylesheet">
   </head>
@@ -32,7 +32,7 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="index.html">
+                <a class="nav-link" href="index.html">
                   <span data-feather="home"></span>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
@@ -44,7 +44,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="asset_report.html">
+                <a class="nav-link active" href="asset_report.html">
                   <span data-feather="bar-chart-2"></span>
                   Assets Reports
                 </a>
@@ -94,7 +94,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
+            <h1 class="h2">Asset Report</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <button class="btn btn-sm btn-outline-secondary">Share</button>
@@ -109,8 +109,7 @@
 
 
           <h5>Student Precences</h5>
-          <div id="loading-wrapper" style="display: none;display: block; height: 480px; width: 1139px;text-align: center;line-height: 480px;"></div>
-          <canvas class="my-4 w-100" id="myChart" width="900" height="380" style="display:none;"></canvas>
+          <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
           <h5>Top 10 Lecturer</h5>
           <div class="table-responsive">
@@ -223,63 +222,5 @@
       feather.replace()
     </script>
 
-    <!-- Graphs -->
-    <script src="../assets/js/chart.min.js"></script>
-    <script type="text/javascript">      
-
-      $("#loading-wrapper").html("");
-      $("#loading-wrapper").append("Loading..")
-      // Syarat : "harus memiliki append sesuai dengan tugas yang diberikan"
-      $("#loading-wrapper").show("fast");
-      function getRandomInt(min, max) {
-          // Ada kondisi (if / case) minimal 2 kondisi
-          if(min < 500){
-            min = 500;
-          }
-          return Math.floor(Math.random() * (max - min + 1)) + min;
-      }
-
-      var student_precences = [];
-      for(var i = 1;i<10;i++){
-        if(i>7 && i > 1){
-          // Ada kondisi (if / case) minimal 2 kondisi
-          break;
-        }
-        student_precences.push(getRandomInt(0,1000))
-      }
-
-      setTimeout(function(){
-        $("#myChart").show("slideUp");
-        $("#loading-wrapper").hide("fast");
-      },250)
-
-      var ctx = document.getElementById("myChart");
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          datasets: [{
-            data: student_precences,
-            lineTension: 0,
-            backgroundColor: 'transparent',
-            borderColor: '#007bff',
-            borderWidth: 4,
-            pointBackgroundColor: '#007bff'
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: false
-              }
-            }]
-          },
-          legend: {
-            display: false,
-          }
-        }
-      });
-    </script>
   </body>
 </html>

@@ -11,15 +11,15 @@
     <title>Dashboard - Universitas Narotama</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">    
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/fontawesome-all.min.css" rel="stylesheet">
     <link href="../assets/css/core/dashboard.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body id="app">
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Universitas Narotama</a>
-      <ul class="navbar-nav px-3">
+        <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           <a class="nav-link" href="../index.html">Sign out</a>
         </li>
@@ -32,13 +32,13 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="index.html">
+                <a class="nav-link" href="index.html">
                   <span data-feather="home"></span>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="financial_report.html">
+                <a class="nav-link active" href="financial_report.html">
                   <span data-feather="shopping-cart"></span>
                   Financial Report
                 </a>
@@ -94,7 +94,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
+            <h1 class="h2">Financial Report</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <button class="btn btn-sm btn-outline-secondary">Share</button>
@@ -102,15 +102,65 @@
               </div>
               <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
                 <span data-feather="calendar"></span>
-                This week
+                This month
               </button>
             </div>
           </div>
 
+          <div class="card-deck mb-12 text-center">
+            <div class="card mb-4 box-shadow">
+              <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Revenue</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">1.829<small class="text-muted">mio</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li><i class="fas fa-sort-up"></i> 18.52 %</li>
+                </ul>
+                <button type="button" class="btn btn-sm btn-block btn-outline-primary">Open Details</button>
+              </div>
+            </div>
 
-          <h5>Student Precences</h5>
-          <div id="loading-wrapper" style="display: none;display: block; height: 480px; width: 1139px;text-align: center;line-height: 480px;"></div>
-          <canvas class="my-4 w-100" id="myChart" width="900" height="380" style="display:none;"></canvas>
+            <div class="card mb-4 box-shadow">
+              <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Invoice</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">911<small class="text-muted">mio</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>10 users included</li>
+                </ul>
+                <button type="button" class="btn btn-sm btn-block btn-outline-primary">Open Details</button>
+              </div>
+            </div>
+
+            <div class="card mb-4 box-shadow">
+              <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Profit and Loss</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">38.12<small class="text-muted">%</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>10 users included</li>
+                </ul>
+                <button type="button" class="btn btn-sm btn-block btn-outline-primary">Open Details</button>
+              </div>
+            </div>
+
+            <div class="card mb-4 box-shadow">
+              <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Forecast</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">340<small class="text-muted">mio</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>10 users included</li>
+                </ul>
+                <button type="button" class="btn btn-sm btn-block btn-outline-primary">Open Details</button>
+              </div>
+            </div>
+
+          </div>
 
           <h5>Top 10 Lecturer</h5>
           <div class="table-responsive">
@@ -221,65 +271,6 @@
     <script src="../assets/js/feather.min.js"></script>
     <script>
       feather.replace()
-    </script>
-
-    <!-- Graphs -->
-    <script src="../assets/js/chart.min.js"></script>
-    <script type="text/javascript">      
-
-      $("#loading-wrapper").html("");
-      $("#loading-wrapper").append("Loading..")
-      // Syarat : "harus memiliki append sesuai dengan tugas yang diberikan"
-      $("#loading-wrapper").show("fast");
-      function getRandomInt(min, max) {
-          // Ada kondisi (if / case) minimal 2 kondisi
-          if(min < 500){
-            min = 500;
-          }
-          return Math.floor(Math.random() * (max - min + 1)) + min;
-      }
-
-      var student_precences = [];
-      for(var i = 1;i<10;i++){
-        if(i>7 && i > 1){
-          // Ada kondisi (if / case) minimal 2 kondisi
-          break;
-        }
-        student_precences.push(getRandomInt(0,1000))
-      }
-
-      setTimeout(function(){
-        $("#myChart").show("slideUp");
-        $("#loading-wrapper").hide("fast");
-      },250)
-
-      var ctx = document.getElementById("myChart");
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          datasets: [{
-            data: student_precences,
-            lineTension: 0,
-            backgroundColor: 'transparent',
-            borderColor: '#007bff',
-            borderWidth: 4,
-            pointBackgroundColor: '#007bff'
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: false
-              }
-            }]
-          },
-          legend: {
-            display: false,
-          }
-        }
-      });
     </script>
   </body>
 </html>
