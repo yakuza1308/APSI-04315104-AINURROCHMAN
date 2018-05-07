@@ -102,107 +102,38 @@
               </div>
               <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
                 <span data-feather="calendar"></span>
-                This week
+                This year
               </button>
             </div>
           </div>
 
 
-          <h5>Student Precences</h5>
-          <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+          
+          <div class="card-deck mb-12 text-center">
 
-          <h5>Top 10 Lecturer</h5>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th width="5%">#</th>
-                  <th width="10%">L-ID</th>
-                  <th>Name</th>
-                  <th width="15%">Teaching Impression</th>
-                  <th width="15%">Social Impression</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>L-121</td>
-                  <td>Arfian</td>
-                  <td>95%</td>
-                  <td>92%</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>L-021</td>
-                  <td>Kusnan</td>
-                  <td>86%</td>
-                  <td>89%</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>L-092</td>
-                  <td>Amboro</td>
-                  <td>90%</td>
-                  <td>74%</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>L-406</td>
-                  <td>Sed</td>
-                  <td>72%</td>
-                  <td>90%</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>L-433</td>
-                  <td>Bagus</td>
-                  <td>80%</td>
-                  <td>82%</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>L-201</td>
-                  <td>Burhan</td>
-                  <td>79%</td>
-                  <td>81%</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>L-411</td>
-                  <td>Wisnu</td>
-                  <td>81%</td>
-                  <td>70%</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>L-402</td>
-                  <td>Noval</td>
-                  <td>80%</td>
-                  <td>70%</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>L-031</td>
-                  <td>Rahadian</td>
-                  <td>60%</td>
-                  <td>81%</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>L-062</td>
-                  <td>Aris</td>
-                  <td>78%</td>
-                  <td>77%</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>L-201</td>
-                  <td>Vinka</td>
-                  <td>75%</td>
-                  <td>70%</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="card mb-4 box-shadow">
+              <div class="card-body">
+                <h5 class="card-title text-left">Submission</h5>
+                <div>
+                  <canvas class="my-4 w-100" id="data-submission"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-4 box-shadow">
+              <div class="card-body">
+                <h5 class="card-title text-left">Validation</h5>
+                <div>
+                <canvas class="my-4 w-100" id="data-validation"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          
+
+
           </div>
         </main>
       </div>
@@ -221,6 +152,63 @@
     <script>
       feather.replace()
     </script>
+    <!-- Graphs -->
+    <script src="../assets/js/chart.min.js"></script>
+    <script type="text/javascript">
+      
+      var ctx = document.getElementById("data-submission");
+      var datasubmission = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+          datasets: [{
+            data: [100,100,100,90,0],
+            lineTension: 0,
+            backgroundColor: '#007bff',
+            borderWidth: 0,
+            pointBackgroundColor: '#007bff'
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: false
+              }
+            }]
+          },
+          legend: {
+            display: false,
+          }
+        }
+      });
 
+      var ctx = document.getElementById("data-validation");
+      var datavalidation = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+          datasets: [{
+            data: [100,100,95,20,0],
+            lineTension: 0,
+            backgroundColor: '#007bff',
+            borderWidth: 0,
+            pointBackgroundColor: '#007bff'
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: false
+              }
+            }]
+          },
+          legend: {
+            display: false,
+          }
+        }
+      });
+    </script>
   </body>
 </html>

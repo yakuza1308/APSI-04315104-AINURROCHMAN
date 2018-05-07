@@ -16,7 +16,7 @@
     <link href="../assets/css/core/dashboard.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body >
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Universitas Narotama</a>
       <ul class="navbar-nav px-3">
@@ -26,7 +26,7 @@
       </ul>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="app">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
@@ -102,104 +102,29 @@
               </div>
               <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
                 <span data-feather="calendar"></span>
-                This week
+                This month
               </button>
             </div>
           </div>
 
-
-          <h5>Student Precences</h5>
-          <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
-          <h5>Top 10 Lecturer</h5>
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
                 <tr>
                   <th width="5%">#</th>
-                  <th width="10%">L-ID</th>
+                  <th width="10%">Asset Type</th>
                   <th>Name</th>
-                  <th width="15%">Teaching Impression</th>
-                  <th width="15%">Social Impression</th>
+                  <th width="15%">Description</th>
+                  <th width="15%">Tickets</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>L-121</td>
-                  <td>Arfian</td>
-                  <td>95%</td>
-                  <td>92%</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>L-021</td>
-                  <td>Kusnan</td>
-                  <td>86%</td>
-                  <td>89%</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>L-092</td>
-                  <td>Amboro</td>
-                  <td>90%</td>
-                  <td>74%</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>L-406</td>
-                  <td>Sed</td>
-                  <td>72%</td>
-                  <td>90%</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>L-433</td>
-                  <td>Bagus</td>
-                  <td>80%</td>
-                  <td>82%</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>L-201</td>
-                  <td>Burhan</td>
-                  <td>79%</td>
-                  <td>81%</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>L-411</td>
-                  <td>Wisnu</td>
-                  <td>81%</td>
-                  <td>70%</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>L-402</td>
-                  <td>Noval</td>
-                  <td>80%</td>
-                  <td>70%</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>L-031</td>
-                  <td>Rahadian</td>
-                  <td>60%</td>
-                  <td>81%</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>L-062</td>
-                  <td>Aris</td>
-                  <td>78%</td>
-                  <td>77%</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>L-201</td>
-                  <td>Vinka</td>
-                  <td>75%</td>
-                  <td>70%</td>
+              <tbody >
+                <tr v-for="asset in assets">
+                  <td >{{asset.index}}</td>
+                  <td>{{asset.type}}</td>
+                  <td>{{asset.name}}</td>
+                  <td>{{asset.description}}</td>
+                  <td>{{asset.ticket}}</td>
                 </tr>
               </tbody>
             </table>
@@ -221,6 +146,43 @@
     <script>
       feather.replace()
     </script>
-
+    <script type="text/javascript">
+      var assets_list = [
+        {
+          index:1,
+          type:"Desktop PC",
+          name:"Standard PC",
+          description:"Employee Standard PC",
+          tickets:29,
+        },
+        {
+          index:2,
+          type:"Laptop",
+          name:"Docking Station",
+          description:"Dell Laptop Docking Station",
+          tickets:26,
+        },
+        {
+          index:3,
+          type:"Printer Network",
+          name:"Printer 101",
+          description:"Color Laser Printer",
+          tickets:19,
+        },
+        {
+          index:4,
+          type:"Laptop",
+          name:"Loaner Laptop",
+          description:"Phidapela Office Loaner Lpatop",
+          tickets:10,
+        }
+      ]
+      var app = new Vue({
+        el: '#app',
+        data: {
+          assets:assets_list
+        }
+      })
+    </script>
   </body>
 </html>
